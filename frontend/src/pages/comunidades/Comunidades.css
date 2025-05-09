@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f8f8f8;
+  }
+  
+  .layout {
+    display: flex;
+    padding: 20px;
+    gap: 30px;
+  }
+  
+  /* Bloco principal com comunidades e recomendações */
+  .comunidades-bloco {
+    flex: 3;
+  }
+  
+  .comunidades-bloco h2 {
+    color: #00008b;
+    margin: 20px 0 10px;
+  }
+  
+  .lista-horizontal {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .card {
+    background: white;
+    padding: 20px;
+    min-width: 160px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex-shrink: 0;
+  }
+  
+  /* Bloco lateral de amigos */
+  .amigos-bloco {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .amigos-bloco h2 {
+    color: #00008b;
+    margin-bottom: 15px;
+  }
+  
+  .amigos-lista {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  

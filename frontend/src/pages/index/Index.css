@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    color: #00008b;
+    margin-bottom: 20px;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 250px;
+  }
+  
+  button {
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .login {
+    background-color: #00008b;
+    color: white;
+  }
+  
+  .login:hover {
+    background-color: #000070;
+  }
+  
+  .cadastro,
+  .unisinos {
+    background-color: white;
+    border: 2px solid #00008b;
+    color: #00008b;
+  }
+  
+  .cadastro:hover,
+  .unisinos:hover {
+    background-color: #f0f8ff;
+  }
+  

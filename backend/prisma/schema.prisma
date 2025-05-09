@@ -1,0 +1,80 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id          Int           @id @default(autoincrement())
+  nome        String        @unique
+  sobrenome   String
+  email       String        @unique
+  senha       String
+  tipodeConta String
+
+  inscricoes  Inscricao[]
+  posts       Post[]
+  midias      Midia[]
+  comunidades Comunidade[] @relation("MembrosComunidade")
+}
+
+model Inscricao {
+  id            Int      @id @default(autoincrement())
+  dataInscricao String
+
+  usuario       Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId     Int
+}
+
+model Post {
+  id              Int         @id @default(autoincrement())
+  tipo            String
+  conteudo        String
+  dataPublicacao  String
+
+  autor           Usuario     @relation(fields: [autorId], references: [id])
+  autorId         Int
+
+  comunidade      Comunidade? @relation(fields: [comunidadeId], references: [id])
+  comunidadeId    Int?
+}
+
+model Midia {
+  id            Int      @id @default(autoincrement())
+  nome          String
+  descricao     String
+  criador       String
+  dataCriacao   String
+  tipo          String   // 'video' ou 'podcast'
+  duracao       String?
+  qualidade     Int?     // para vídeo
+  apresentador  String?  // para podcast
+
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id])
+  usuarioId     Int
+}
+
+model Comunidade {
+  id        Int        @id @default(autoincrement())
+  nome      String
+  descricao String
+  membros   Int
+
+  posts     Post[]
+  usuarios  Usuario[] @relation("MembrosComunidade")
+}
+
+model Categoria {
+  id    Int    @id @default(autoincrement())
+  nome  String
+}
