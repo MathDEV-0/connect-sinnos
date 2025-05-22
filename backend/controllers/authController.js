@@ -2,6 +2,8 @@ const { PrismaClient } = require('@prisma/client');
 const jwt = require('jsonwebtoken');
 const prisma = new PrismaClient();
 
+const SECRET_KEY = process.env.JWT_SECRET;
+
 const login = async (req, res) => {
   const { email, senha } = req.body;
   try {
@@ -18,7 +20,7 @@ const login = async (req, res) => {
     }
 
     // Gera token de acesso (simples, para testes)
-    const token = jwt.sign({ userId: user.id }, 'sua_chave_secreta', { expiresIn: '1h' });
+    const token = jwt.sign({ userId: user.id }, SECRET_KEY, { expiresIn: '1h' });
 
     res.json({ token, message: 'Login realizado com sucesso' });
 
@@ -28,4 +30,5 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = login;
+module.exports = {login};
+
