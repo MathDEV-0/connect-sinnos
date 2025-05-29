@@ -2,7 +2,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const pendrivePath = 'G:/uploads';
+const pendrivePath = 'home/buguy/Documentos/CODE/Sinos-Connect/uploads';
 
 module.exports = {
   storage: multer.diskStorage({
@@ -28,21 +28,3 @@ module.exports = {
   }
 };
 
-
-
-
-/*
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, 'G:/uploads'));
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + path.extname(file.originalname));
-  },
-});
-
-const upload = multer({ storage });
-
-module.exports = upload;
-*/

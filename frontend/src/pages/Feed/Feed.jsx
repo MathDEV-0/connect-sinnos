@@ -2,7 +2,7 @@
 import Retangulo from "../../components/Retangulo/Retangulo";
 import { Link, useNavigate } from "react-router-dom";
 import TopBar from "../../components/TopBar/TopBar";
-import Post from "../../components/Post/post";
+import Post from "../../components/Post/Post";
 import styles from "./Feed.module.css";
 import { usePostContext } from "../../context/PostContext";
 import { useState } from "react"; // Import necessário para estado local

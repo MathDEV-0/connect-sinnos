@@ -15,16 +15,36 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
-  // Função para verificar os dados de login
-  const handleLogin = () => {
+  // Função para verificar os dados de login admin teste
+  const handleLoginTest = () => {
     if (username === "admin" && password === "123456") {
       localStorage.setItem("token", "fake-token-123"); // Armazena um token falso no localStorage
       navigate("/feed"); // Se as credenciais estiverem corretas, redireciona para o feed
-    } else {
-      alert("Usuário ou senha incorretos!");
     }
   };
 
+  // Função para verificar dados de login
+  function handleLogin(username, password){ 
+      try {
+      const response = fetch('http://localhost:3000/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: username, // Envia o email como username
+          senha: password, // Envia a senha
+        }),
+    });
+    logger.log('Login response:', response.data);
+    localStorage.setItem('token', response.data.token);
+    navigate('/feed');
+  } catch (error) {
+    console.error('Erro no login:', error);
+    alert('Usuário ou senha inválidos');
+  }
+}
+    
   return (
     <div>
       <div className={styles.homeContainer}>
@@ -54,9 +74,10 @@ const Login = () => {
                 <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
               </span>
             </div>
-            <button className={styles.botao} onClick={handleLogin}>
+            {/*}<button className={styles.botao} onClick={handleLogin}>
               Entrar
-            </button>
+            </button>{*/}
+            <button className={styles.botao} onClick={() => handleLogin(username, password)}>Entrar</button>
           </div>
         </Retangulo>
       </div>

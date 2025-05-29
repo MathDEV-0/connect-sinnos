@@ -32,6 +32,6 @@ app.use('/auth', authRoutes);
 app.use('/upload', uploadRoutes);
 
 // Serve arquivos estáticos da pasta uploads
-app.use('/uploads', express.static('G:/uploads'));
+app.use('/uploads', express.static('home/buguy/Documentos/CODE/Sinos-Connect/uploads'));
 
 module.exports = app;

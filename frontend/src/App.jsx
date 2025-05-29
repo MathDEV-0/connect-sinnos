@@ -17,9 +17,9 @@ const App = () => {
       <PostProvider>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/feed" element={<Feed />} />
-          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Feed" element={<Feed />} />
+          <Route path="/Create-post" element={<CreatePost />} />
           {/*<Route path="/perfil" element={<Perfil />} />
         <Route path="/repositorios" element={<Repositorios />} />
         <Route path="/sinosflix" element={<Sinosflix />} />
