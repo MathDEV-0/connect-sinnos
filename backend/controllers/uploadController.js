@@ -27,7 +27,7 @@ const uploadFile = async (req, res) => {
         tipo: mimetype.startsWith('image') ? 'imagem' :
               mimetype.startsWith('video') ? 'video' : 'outro',
         usuarioId: req.user.id,
-        caminho: `/uploads/${req.file.filename}`,
+        caminho: `${uploadPath}${req.file.filename}`,
       },
     });
 
@@ -51,32 +51,3 @@ const uploadFile = async (req, res) => {
 module.exports = {
   uploadFile,
 };
-/*
-const uploadArquivo = async (req, res) => {
-  try {
-    const { descricao = '', tipo = 'arquivo' } = req.body;
-    const filePath = req.file ? req.file.filename : null;
-
-    if (!filePath) {
-      return res.status(400).json({ error: 'Arquivo não enviado' });
-    }
-
-    await prisma.post.create({
-      data: {
-        tipo,
-        conteudo: filePath,
-        dataPublicacao: new Date().toISOString(),
-        autorId: 1, // substituir por ID real após login
-      },
-    });
-
-    res.status(201).json({ message: 'Upload feito com sucesso!' });
-  } catch (err) {
-    console.error('Erro no upload:', err);
-    res.status(500).json({ error: 'Erro ao fazer upload.' });
-  }
-};
-
-module.exports = {
-  uploadArquivo,
-};*/

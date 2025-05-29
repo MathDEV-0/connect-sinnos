@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./CreatePost.module.css";
 import { usePostContext } from "../../context/PostContext";
 
-const CreatePost = () => {
+const Post = () => {
 const location = useLocation();
 const navigate = useNavigate();
 const { addPost } = usePostContext();
@@ -95,4 +95,4 @@ const [descricao, setDescricao] = useState("");
   );
 };
 
-export default CreatePost;
+export default Post;
